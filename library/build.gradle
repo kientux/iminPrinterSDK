@@ -3,6 +3,8 @@ plugins {
 }
 
 android {
+    namespace = 'com.imin.printerlib'
+
     compileSdkVersion 32
 
     defaultConfig {
@@ -23,10 +25,24 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
     implementation "androidx.annotation:annotation:1.4.0"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives sourcesJar
 }
