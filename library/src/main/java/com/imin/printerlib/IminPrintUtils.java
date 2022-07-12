@@ -21,6 +21,8 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.Layout.Alignment;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import com.imin.printerlib.bean.TextSizeBean;
 import com.imin.printerlib.port.UsbPrinter;
@@ -107,7 +109,13 @@ public class IminPrintUtils {
         this.initParams();
     }
 
-    public void initPrinter(IminPrintUtils.PrintConnectType type, String overrideProductName) {
+    /**
+     * Init printer with specific type and an optionally product name
+     * @param type printer type
+     * @param overrideProductName if this is set and there are multiple printer with the same type
+     *                            then printer with this product name will be used.
+     */
+    public void initPrinter(IminPrintUtils.PrintConnectType type, @Nullable String overrideProductName) {
         Log.i("xgh", " SDK initPrinter:" + type + "; override productName: "
                 + (overrideProductName == null ? "null" : overrideProductName));
         switch(type) {

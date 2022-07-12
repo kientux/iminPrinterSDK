@@ -1,3 +1,3 @@
 # Imin Printer SDK
 
-Modified to fix overrided USB devices.
+Modified to fix overridden USB devices.
